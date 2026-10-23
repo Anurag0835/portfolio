@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-psi-steel-37.vercel.app/sitemap.xml

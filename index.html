@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anurag Jain | Full-Stack Web Developer</title>
   <meta name="description" content="Portfolio of Anurag Jain - Full-Stack Web Developer specialized in React.js, Node.js, Express, MongoDB, and PostgreSQL. SIH 2025 Finalist." />
+  <link rel="canonical" href="https://portfolio-psi-steel-37.vercel.app/" />
+  <meta name="theme-color" content="#070b14" />
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://portfolio-psi-steel-37.vercel.app/" />
+  <meta property="og:title" content="Anurag Jain | Full-Stack Web Developer" />
+  <meta property="og:description" content="Portfolio of Anurag Jain - Full-Stack Web Developer specialized in React.js, Node.js, Express, MongoDB, and PostgreSQL. SIH 2025 Finalist." />
+  <meta property="og:image" content="https://portfolio-psi-steel-37.vercel.app/anurag_profile.jpg" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://portfolio-psi-steel-37.vercel.app/" />
+  <meta name="twitter:title" content="Anurag Jain | Full-Stack Web Developer" />
+  <meta name="twitter:description" content="Portfolio of Anurag Jain - Full-Stack Web Developer specialized in React.js, Node.js, Express, MongoDB, and PostgreSQL. SIH 2025 Finalist." />
+  <meta name="twitter:image" content="https://portfolio-psi-steel-37.vercel.app/anurag_profile.jpg" />
+
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1247,14 +1264,105 @@
       .projects-grid {
         grid-template-columns: 1fr;
       }
-      @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Accessibility: Keyboard Focus Indicators */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid var(--accent-cyan) !important;
+      outline-offset: 3px !important;
+    }
+
+    .skip-to-content {
+      position: absolute;
+      top: -100px;
+      left: 20px;
+      background: var(--accent-cyan);
+      color: #060d19;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      z-index: 99999;
+      transition: top 0.2s ease;
+      text-decoration: none;
+    }
+    .skip-to-content:focus {
+      top: 20px;
+    }
+
+    /* Mobile Navigation Drawer */
+    .mobile-menu-btn {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      background: rgba(148, 163, 184, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .mobile-menu-btn:hover {
+      background: rgba(148, 163, 184, 0.2);
+      border-color: var(--border-accent);
+    }
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+    }
+    .mobile-nav-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 14px;
+      margin-top: 12px;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+    }
+    .mobile-nav-drawer.open {
+      display: flex;
+    }
+    .mobile-nav-link {
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    .mobile-nav-link:hover, .mobile-nav-link.active {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-cyan);
+    }
+
+    /* Reduced Motion Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .ambient-orb {
+        animation: none !important;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Accessibility Skip Link -->
+  <a href="#home" class="skip-to-content">Skip to content</a>
 
   <!-- Ambient Light Orbs -->
   <div class="ambient-bg" aria-hidden="true">
@@ -1307,7 +1415,23 @@
             </svg>
             Resume
           </a>
+          <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
+      </div>
+
+      <div id="mobileNavDrawer" class="mobile-nav-drawer" role="navigation" aria-label="Mobile Navigation">
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#experience" class="mobile-nav-link">Experience</a>
+        <a href="#projects" class="mobile-nav-link">Projects</a>
+        <a href="#education" class="mobile-nav-link">Education</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
       </div>
     </header>
 
@@ -1374,7 +1498,7 @@
         <div class="hero-aside">
           <div class="avatar-wrapper">
             <div class="avatar-inner">
-              <img src="anurag_profile.jpg" alt="Anurag Jain - Full Stack Web Developer" />
+              <img src="anurag_profile.jpg" alt="Anurag Jain - Full Stack Web Developer" fetchpriority="high" width="768" height="1024" />
               <div class="avatar-tag">
                 <div>
                   <div class="avatar-tag-title">Anurag Jain</div>
@@ -1643,7 +1767,7 @@
         <!-- Project 1: AI News Summarizer -->
         <article class="project-card" data-category="ai">
           <div class="project-card-banner">
-            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=70" alt="AI News Summarizer" />
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=70" alt="AI News Summarizer" loading="lazy" decoding="async" width="800" height="160" />
             <span class="project-badge-type">AI & Accessibility</span>
           </div>
           <div class="project-card-body">
@@ -1669,7 +1793,7 @@
         <!-- Project 2: E-Learning Platform -->
         <article class="project-card" data-category="fullstack">
           <div class="project-card-banner">
-            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=70" alt="E-Learning Platform" />
+            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=70" alt="E-Learning Platform" loading="lazy" decoding="async" width="800" height="160" />
             <span class="project-badge-type">Full-Stack LMS</span>
           </div>
           <div class="project-card-body">
@@ -1696,7 +1820,7 @@
         <!-- Project 3: FarmSync Smart Farming Assistant -->
         <article class="project-card" data-category="fullstack">
           <div class="project-card-banner">
-            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=75" alt="FarmSync Smart Farming Assistant" />
+            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=75" alt="FarmSync Smart Farming Assistant" loading="lazy" decoding="async" width="800" height="160" />
             <span class="project-badge-type">Team Flagship</span>
           </div>
           <div class="project-card-body">
@@ -2194,14 +2318,16 @@
         Sending to Anurag's Gmail...
       `;
 
-      // Save locally to messages.json if local server is active
-      try {
-        fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, subject, message })
-        }).catch(() => {});
-      } catch (err) {}
+      // Save locally to messages.json only during local development
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        try {
+          fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, subject, message })
+          }).catch(() => {});
+        } catch (err) {}
+      }
 
       try {
         // Direct delivery to anurag080305@gmail.com
@@ -2276,6 +2402,22 @@
         `;
       }
     });
+
+    // 8. Mobile Navigation Drawer Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+    if (mobileMenuBtn && mobileNavDrawer) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = mobileNavDrawer.classList.toggle('open');
+        mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+      });
+      mobileNavDrawer.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNavDrawer.classList.remove('open');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 </body>
 </html>
