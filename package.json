@@ -1,0 +1,16 @@
+{
+  "name": "anurag-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Anurag Jain - Frontend Developer Portfolio",
+  "scripts": {
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.4.1"
+  }
+}
